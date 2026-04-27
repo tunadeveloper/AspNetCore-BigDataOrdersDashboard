@@ -1,36 +1,82 @@
-﻿
+﻿@model List<Category>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kategoriler";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var list = Model ?? new List<Category>();
+    var toplam = list.Count;
+    var aktif = list.Count(c => c.CategoryStatus);
+    var pasif = toplam - aktif;
 }
 
-<section class="content">
-    <div class="block-header">
-        <div class="row">
-            <div class="col-lg-7 col-md-6 col-sm-12">
-                <h2>
-                    Stater Page
-                    <small class="text-muted">Welcome to Nexa Application</small>
-                </h2>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-12">
-                <ul class="breadcrumb float-md-right">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Nexa</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Extra</a></li>
-                    <li class="breadcrumb-item active">Stater Page</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<link rel="stylesheet" href="~/css/sites/category-index.css" asp-append-version="true" />
+
+<section class="content category-index-page">
     <div class="container-fluid">
-        <div class="row clearfix">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="body">
-                        <h4>Stater page</h4>
+        <div class="category-index-hero">
+            <nav class="category-index-breadcrumb" aria-label="Sayfa konumu">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kategoriler</li>
+                </ol>
+            </nav>
+            <h2><i class="zmdi zmdi-view-module m-r-10"></i>Kategori Yönetimi</h2>
+            <p>Tüm ürün kategorilerinizi tek ekranda görüntüleyin; durum ve açıklamaları hızlıca takip edin.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="category-index-stat category-index-stat--total">
+                    <div class="category-index-stat__label">Toplam kategori</div>
+                    <div class="d-flex align-items-center justify-content-between m-t-10">
+                        <span class="category-index-stat__value">@toplam</span>
+                        <i class="zmdi zmdi-collection-item"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="category-index-stat category-index-stat--active">
+                    <div class="category-index-stat__label">Aktif</div>
+                    <div class="d-flex align-items-center justify-content-between m-t-10">
+                        <span class="category-index-stat__value">@aktif</span>
+                        <i class="zmdi zmdi-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="category-index-stat category-index-stat--inactive">
+                    <div class="category-index-stat__label">Pasif</div>
+                    <div class="d-flex align-items-center justify-content-between m-t-10">
+                        <span class="category-index-stat__value">@pasif</span>
+                        <i class="zmdi zmdi-block"></i>
                     </div>
                 </div>
             </div>
         </div>
+            <div class="row">
+                @foreach (var item in list)
+                {
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 m-b-20">
+                        <div class="category-index-card">
+                            <div class="category-index-card__head">
+                                <h3 class="category-index-card__title">@(string.IsNullOrWhiteSpace(item.CategoryName) ? "İsimsiz kategori" : item.CategoryName)</h3>
+                                <span class="category-index-card__id">#@item.CategoryId</span>
+                            </div>
+                            <div class="category-index-card__body">
+                                <p class="category-index-card__desc">
+                                    @(string.IsNullOrWhiteSpace(item.CategoryDescription) ? "Açıklama girilmemiş." : item.CategoryDescription)
+                                </p>
+                                @if (item.CategoryStatus)
+                                {
+                                    <span class="category-index-badge category-index-badge--active"><i class="zmdi zmdi-check"></i> Aktif</span>
+                                }
+                                else
+                                {
+                                    <span class="category-index-badge category-index-badge--inactive"><i class="zmdi zmdi-close"></i> Pasif</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
     </div>
 </section>
