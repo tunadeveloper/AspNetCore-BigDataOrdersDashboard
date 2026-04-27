@@ -24,6 +24,19 @@ section.content.category-index-page {
     background: rgba(255, 255, 255, 0.12);
 }
 
+.category-index-hero__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.category-index-hero__lead {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
 .category-index-hero h2 {
     margin: 0 0 0.35rem;
     font-weight: 700;
@@ -34,6 +47,28 @@ section.content.category-index-page {
     margin: 0;
     opacity: 0.95;
     font-size: 0.95rem;
+}
+
+.category-index-hero__new {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.15rem;
+    background: #fff;
+    color: #e65100 !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-index-hero__new:hover {
+    color: #bf360c !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
 }
 
 .category-index-breadcrumb {
@@ -160,6 +195,47 @@ section.content.category-index-page {
     line-height: 1.55;
     margin: 0 0 1rem;
     min-height: 2.8rem;
+}
+
+.category-index-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eceff1;
+}
+
+.category-index-card__btn {
+    flex: 1 1 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none !important;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.category-index-card__btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    color: inherit;
+}
+
+.category-index-card__btn--edit {
+    background: #fff3e0;
+    color: #e65100 !important;
+    border: 1px solid rgba(230, 81, 0, 0.35);
+}
+
+.category-index-card__btn--delete {
+    background: #ffebee;
+    color: #c62828 !important;
+    border: 1px solid rgba(198, 40, 40, 0.35);
 }
 
 .category-index-badge {

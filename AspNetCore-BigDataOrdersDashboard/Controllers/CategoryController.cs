@@ -17,5 +17,6 @@ namespace AspNetCore_BigDataOrdersDashboard.Controllers
             var values = _context.Categories.ToList();
             return View(values);
         }
+
     }
 }
