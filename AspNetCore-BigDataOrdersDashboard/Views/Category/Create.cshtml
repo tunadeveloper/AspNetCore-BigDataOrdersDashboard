@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Yeni kategori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/sites/category-index.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/sites/category-form.css" asp-append-version="true" />
+
+<section class="content category-index-page category-form-page">
+    <div class="container-fluid">
+        <div class="category-index-hero">
+            <nav class="category-index-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Category" asp-action="Index">Kategoriler</a></li>
+                    <li class="breadcrumb-item active">Yeni kategori</li>
+                </ol>
+            </nav>
+            <div class="category-index-hero__row">
+                <div class="category-index-hero__lead">
+                    <h2><i class="zmdi zmdi-plus-circle m-r-10"></i>Yeni kategori</h2>
+                    <p>Yeni bir ürün kategorisi oluşturun.</p>
+                </div>
+                <a asp-controller="Category" asp-action="Index" class="category-index-hero__new"><i class="zmdi zmdi-arrow-left"></i> Kategorilere dön</a>
+            </div>
+        </div>
+
+        <div class="category-form-shell">
+            <div class="category-form-card">
+                <div class="category-form-card__head">
+                    <h3>Kategori bilgileri</h3>
+                </div>
+                <div class="category-form-card__body">
+                    <form asp-action="Create" method="post">
+                        <div class="category-form-field">
+                            <label class="form-label" for="CategoryName">Kategori adı</label>
+                            <input type="text" name="CategoryName" id="CategoryName" class="form-control" />
+                        </div>
+                        <div class="category-form-field">
+                            <label class="form-label" for="CategoryDescription">Açıklama</label>
+                            <textarea name="CategoryDescription" id="CategoryDescription" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="category-form-field">
+                            <div class="category-form-check">
+                                <input type="checkbox" name="CategoryStatus" id="CategoryStatus" value="true" class="form-check-input" checked />
+                                <label class="form-check-label" for="CategoryStatus">Aktif</label>
+                            </div>
+                        </div>
+                        <div class="category-form-actions">
+                            <button type="submit" class="category-form-btn-primary"><i class="zmdi zmdi-check"></i> Kaydet</button>
+                            <a asp-controller="Category" asp-action="Index" class="category-form-btn-secondary"><i class="zmdi zmdi-close"></i> İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

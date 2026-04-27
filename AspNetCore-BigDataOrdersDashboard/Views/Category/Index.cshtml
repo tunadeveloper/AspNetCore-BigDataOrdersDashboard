@@ -20,7 +20,7 @@
                     <h2><i class="zmdi zmdi-view-module m-r-10"></i>Kategori Yönetimi</h2>
                     <p>Tüm ürün kategorilerinizi tek ekranda görüntüleyin; durum ve açıklamaları hızlıca takip edin.</p>
                 </div>
-                <a href="javascript:void(0)" class="category-index-hero__new"><i class="zmdi zmdi-plus"></i> Yeni Kategori</a>
+                <a asp-controller="Category" asp-action="Create" class="category-index-hero__new"><i class="zmdi zmdi-plus"></i> Yeni Kategori</a>
             </div>
         </div>
 
@@ -75,7 +75,7 @@
                                     <span class="category-index-badge category-index-badge--inactive"><i class="zmdi zmdi-close"></i> Pasif</span>
                                 }
                                 <div class="category-index-card__actions">
-                                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryId" class="category-index-card__btn category-index-card__btn--edit"><i class="zmdi zmdi-edit"></i> Güncelle</a>
+                                    <a asp-controller="Category" asp-action="Update" asp-route-id="@item.CategoryId" class="category-index-card__btn category-index-card__btn--edit"><i class="zmdi zmdi-edit"></i> Güncelle</a>
                                     <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.CategoryId" class="category-index-card__btn category-index-card__btn--delete"><i class="zmdi zmdi-delete"></i> Sil</a>
                                 </div>
                             </div>
